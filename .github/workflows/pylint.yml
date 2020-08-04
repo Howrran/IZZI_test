@@ -25,4 +25,4 @@ jobs:
       - name: install requirements
         run: pip install -r requirements.txt
       - name: run pylint
-        run: pylint *
+        run: cd izzitest; pylint *
