@@ -1,3 +1,6 @@
+"""
+Module for Order model
+"""
 from django.db import models, IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
 
