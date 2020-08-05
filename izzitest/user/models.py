@@ -81,7 +81,7 @@ class User(AbstractBaseUser):
         try:
             users = User.objects.filter(**data)
             return list(users)
-        except ObjectDoesNotExist:
+        except (ObjectDoesNotExist, ValidationError):
             return None
 
     @staticmethod
