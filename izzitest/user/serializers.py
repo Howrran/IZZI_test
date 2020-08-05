@@ -1,8 +1,14 @@
-from .models import User
+"""
+User serializer for API
+"""
 from rest_framework import serializers
+from .models import User
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-# class UserSerializer(serializers.Serializer):
+    """
+    User serializer for API
+    """
     class Meta:
         model = User
         fields = ['name', 'surname', 'birthday', 'registration_date']
