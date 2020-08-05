@@ -43,7 +43,7 @@ class UserService():
         Add users from csv file
 
         :param file: str | file path
-        :return:
+        :return: bool
         """
 
         start = 0
@@ -59,3 +59,5 @@ class UserService():
                 birthday=row[UserService.BIRTHDAY],
                 registration_date=row[UserService.REGISTRATION_DATE]
             )
+
+        return True
