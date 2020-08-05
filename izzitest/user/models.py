@@ -17,6 +17,7 @@ class User(AbstractBaseUser):
     registration_date = models.DateField()
     order_id = models.ForeignKey(Order, related_name='order', on_delete=models.CASCADE, null=True)
 
+    USERNAME_FIELD = "name"
     objects = BaseUserManager()
 
     class Meta:
