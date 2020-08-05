@@ -2,7 +2,7 @@
 Module for Order model
 """
 from django.db import models, IntegrityError
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 
 
 class Order(models.Model):
@@ -16,7 +16,7 @@ class Order(models.Model):
         db_table = 'Orders'  # table name
 
     def __repr__(self):
-        return f'(product = {self.product}, date = {self.date})'
+        return f'({self.product=}, {self.date=})'
 
     @staticmethod
     def create(product, date):
@@ -24,7 +24,7 @@ class Order(models.Model):
         Create new order in database
 
         :param product: str | product name
-        :param date: str | date form YYYY-MM-DD
+        :param date: str | date format YYYY-MM-DD
         :return: Order object
         """
         # check if this order already exist in database
@@ -39,7 +39,7 @@ class Order(models.Model):
         try:
             order.save()
             return order
-        except IntegrityError:
+        except (IntegrityError, ValidationError):
             return None
 
     @staticmethod
@@ -48,7 +48,7 @@ class Order(models.Model):
         Get orders from database by parameters
 
         :param product: str | product name
-        :param date: str | date form YYYY-MM-DD
+        :param date: str | date format YYYY-MM-DD
         :return: list
         """
         data = {}
