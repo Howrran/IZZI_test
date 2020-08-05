@@ -1,3 +1,6 @@
+"""
+User model in database
+"""
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.db import models, IntegrityError
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
