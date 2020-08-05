@@ -36,7 +36,7 @@ class User(AbstractBaseUser):
         :param birthday: str | date format YYYY-MM-DD
         :param registration_date: str | date format YYYY-MM-DD
         :param order_id: int
-        :return: User object
+        :return: User object or None
         """
         user = User(
             name=name,
