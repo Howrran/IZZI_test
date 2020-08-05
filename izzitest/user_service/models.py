@@ -53,6 +53,10 @@ class UserService():
             start = 1
 
         for row in rows[start:]:
+
+            if len(row) < 4: # i could use try except here
+                continue
+
             UserService.add_user(
                 name=row[UserService.NAME],
                 surname=row[UserService.SURNAME],
