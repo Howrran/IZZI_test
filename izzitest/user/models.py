@@ -91,3 +91,14 @@ class User(AbstractBaseUser):
         :return: list
         """
         return list(User.objects.all())
+
+    @staticmethod
+    def format_date(date):
+        """
+        Change date format into appropriate
+
+        :param date: str | date
+        :return: str | date format YYYY-MM-DD
+        """
+        date = date.replace('\\', '-').replace('/', '-').replace(',', '-').replace('.', '-')
+        return date
