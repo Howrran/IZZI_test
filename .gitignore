@@ -130,3 +130,4 @@ dmypy.json
 
 .idea/
 /TestData.csv
+/izzitest/media/users.csv
