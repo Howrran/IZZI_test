@@ -1,4 +1,4 @@
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.db import models, IntegrityError
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from order.models import Order
@@ -12,7 +12,7 @@ class User(AbstractBaseUser):
     surname = models.CharField(max_length=255)
     birthday = models.DateField()
     registration_date = models.DateField()
-    order_id = models.ForeignKey(Order, related_name='order', on_delete=models.CASCADE)
+    order_id = models.ForeignKey(Order, related_name='order', on_delete=models.CASCADE, null=True)
 
     objects = BaseUserManager()
 
@@ -46,7 +46,7 @@ class User(AbstractBaseUser):
         try:
             user.save()
             return user
-        except IntegrityError:
+        except (IntegrityError, ValidationError):
             return None
 
     @staticmethod

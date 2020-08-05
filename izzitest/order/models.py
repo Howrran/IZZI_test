@@ -2,7 +2,7 @@
 Module for Order model
 """
 from django.db import models, IntegrityError
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, ValidationError
 
 
 class Order(models.Model):
@@ -39,7 +39,7 @@ class Order(models.Model):
         try:
             order.save()
             return order
-        except IntegrityError:
+        except (IntegrityError, ValidationError):
             return None
 
     @staticmethod
